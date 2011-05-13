@@ -1,0 +1,20 @@
+#! /bin/sh
+
+full=0
+mod=0
+while [ -n "$(echo $1 | grep '-')" ]; do
+    case $1 in
+        -f ) full=1;;
+        -m ) mod=1;;
+        * ) echo 'usage: vc [-f] [-m]'
+            exit 1
+    esac
+    shift
+done
+
+LC_ALL=C
+hg tip --template "Hash: {node}\nAbr. Hash: {node|short}\nAbr. Parent Hashes: {parents|nonempty}\nCommitter Name: {author|person}\nCommitter Email: {author|email}\nCommit Date: {date|isodate}\nCommit Description: {desc|nonempty|firstline}\nCommit Date Raw: {date}\nTags: {tags}\n" | gawk -v script=log -v full=$full -f vc-hg.awk > vc.tex
+
+if [ "$mod" = 1 ] ; then
+    hg status | gawk -v script=status -f vc-git.awk >> vc.tex
+fi
