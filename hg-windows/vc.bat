@@ -19,5 +19,5 @@ set LC_ALL=C
 hg tip --template "Hash: {node}\nAbr. Hash: {node|short}\nAbr. Parent Hashes: {parents|nonempty}\nCommitter Name: {author|person}\nCommitter Email: {author|email}\nCommit Date: {date|isodate}\nCommit Description: {desc|nonempty|firstline}\nCommit Date Raw: {date}\nTags: {tags}\n" | gawk -v script=log -v full=%full% -f vc-hg.awk > vc.tex
 
 if "%mod%" == "1" (
-    hg status | gawk -v script=status -f vc-git.awk >> vc.tex
+    hg status | gawk -v script=status -f vc-hg.awk >> vc.tex
 }
