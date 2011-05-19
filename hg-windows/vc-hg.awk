@@ -2,7 +2,7 @@
 
 BEGIN {
 		
-### Process output of "git status".
+### Process output of "hg status".
 		if (script=="status") {
 				modified = 0
 		}
