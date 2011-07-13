@@ -55,7 +55,7 @@ END {
 ### Write generic version control macros.
 				print "%%% Define generic version control macros."
 				print "\\gdef\\VCRevision{\\HGAbrHash}%"
-				print "\\gdef\\VCAuthor{\\HGCommiterName}%"
+				print "\\gdef\\VCAuthor{\\HGCommitterName}%"
         print "\\gdef\\VCDateRAW{" DateRAW "}%"
         print "\\gdef\\VCDateISO{" DateISO "}%"
         print "\\gdef\\VCDateTEX{" DateTEX "}%"
